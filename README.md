@@ -18,6 +18,14 @@ for instructions._
 
 ## Currently Supports
 
+- **Сode Completion** 
+  - Context-aware suggestions for shapes, connections, styles, and keywords
+  - Multi-word verbose suggestions (e.g., "database server", "load balancer")
+  - Inline origin details showing suggestion types ([Shape], [Keyword], [Style Property])
+  - Smart filtering with fuzzy matching and CamelCase support
+  - Post-dot completion for nested properties and shapes
+  - Pattern suggestions for common architectural diagrams
+- **Hover Documentation** showing detailed information about D2 elements
 - Syntax highlighting `.d2` files
 - Open preview window on the side (right-click or (ctrl+shift+d) (mac -> shift+cmd+d))
 - Format Document for `.d2` files
@@ -43,6 +51,41 @@ y: |`md
 ## Install
 
 You can install using the extension sidebar or by going to the [Visual Studio Marketplace Website](https://marketplace.visualstudio.com/items?itemName=terrastruct.d2) and clicking "Install".
+
+## Code Completion Features
+
+The extension provides intelligent code completion that understands D2 syntax:
+
+### Shape Completions
+Type any letter to see shape suggestions. After typing `shape:`, you'll see all available shapes like `square`, `circle`, `cylinder`, `cloud`, etc.
+
+For nested shapes, the extension provides full path suggestions. If you have a shape `Backbone` inside `Middle`, typing "Back" will suggest `Middle.Backbone` to ensure valid references.
+
+The completion system intelligently prioritizes existing shapes over new suggestions. When you type "AIS" and there's already a `Middle.AIS` shape, it will appear first and be preselected, making it faster to reference existing elements.
+
+### Connection Completions
+After typing a shape name and space, you'll see connection operators (`->`, `<->`, `--`, `<-`).
+
+### Style Completions
+Inside style blocks or after `style.`, get suggestions for all style properties like `fill`, `stroke`, `opacity`, `shadow`, etc.
+
+### Context-Aware Values
+The extension suggests appropriate values based on context:
+- Colors after `fill:` or `stroke:`
+- Directions after `direction:`
+- Boolean values after properties like `shadow:` or `bold:`
+- Existing shapes after connections or `near:`
+
+### Multi-Word Suggestions
+D2 supports multi-word identifiers without quotes. The extension suggests shapes like `database server`, `load balancer`, `web server` without automatically adding quotes. You can manually add quotes if needed.
+
+### Configuration
+You can customize the completion behavior in VS Code settings:
+- `d2.completion.enabled`: Enable/disable code completion
+- `d2.completion.verboseMultiWord`: Show verbose multi-word suggestions
+- `d2.completion.showOriginDetails`: Show inline details about suggestions
+- `d2.completion.enablePatternSuggestions`: Enable AI-powered pattern suggestions
+- `d2.hover.enabled`: Enable hover documentation
 
 ## Contributing
 

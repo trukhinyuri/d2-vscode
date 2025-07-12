@@ -30,6 +30,83 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "D2 Viewer",
+      "properties": {
+        "D2.autoUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically update the preview as you edit the D2 file."
+        },
+        "D2.updateTimer": {
+          "type": "number",
+          "default": 1500,
+          "description": "Specifies the amount of time (in ms) to wait between keystrokes before updating the preview."
+        },
+        "D2.updateOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically update on saving the D2 file."
+        },
+        "D2.previewTheme": {
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "Neutral gray",
+            "Flagship Terrastruct",
+            "Cool classics",
+            "Mixed berry blue",
+            "Grape soda",
+            "Aubergine",
+            "Colorblind clear",
+            "Vanilla nitro cola",
+            "Orange creamsicle",
+            "Shirley temple",
+            "Earth tones",
+            "Everglade green",
+            "Buttered toast",
+            "Terminal",
+            "Terminal Grayscale",
+            "Origami",
+            "Dark Flagship Terrastruct",
+            "Dark mauve"
+          ],
+          "description": "Theme used for preview."
+        },
+        "D2.previewLayout": {
+          "type": "string",
+          "default": "dagre",
+          "enum": [
+            "dagre",
+            "elk",
+            "tala"
+          ],
+          "enumDescriptions": [
+            "The directed graph layout library Dagre",
+            "Eclipse Layout Kernel (ELK) with the Layered algorithm",
+            "Terrastruct's AutoLayout Approach - available if installed"
+          ],
+          "description": "Layout used for preview."
+        },
+        "D2.previewSketch": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use sketch rendering in preview."
+        },
+        "D2.execPath": {
+          "type": "string",
+          "default": "d2",
+          "description": "Path to d2 executable if not on current PATH"
+        },
+        "D2.checkForInstallAtStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check for required D2 command line tools on startup."
+        }
+      }
+    },
     "taskDefinitions": [
       {
         "type": "D2"
@@ -136,83 +213,6 @@
         "when": "editorLangId == d2"
       }
     ],
-    "configuration": {
-      "type": "object",
-      "title": "D2 Viewer",
-      "properties": {
-        "D2.autoUpdate": {
-          "type": "boolean",
-          "default": true,
-          "description": "Automatically update the preview as you edit the D2 file."
-        },
-        "D2.updateTimer": {
-          "type": "number",
-          "default": 1500,
-          "description": "Specifies the amount of time (in ms) to wait between keystrokes before updating the preview."
-        },
-        "D2.updateOnSave": {
-          "type": "boolean",
-          "default": false,
-          "description": "Automatically update on saving the D2 file."
-        },
-        "D2.previewTheme": {
-          "type": "string",
-          "default": "default",
-          "enum": [
-            "default",
-            "Neutral gray",
-            "Flagship Terrastruct",
-            "Cool classics",
-            "Mixed berry blue",
-            "Grape soda",
-            "Aubergine",
-            "Colorblind clear",
-            "Vanilla nitro cola",
-            "Orange creamsicle",
-            "Shirley temple",
-            "Earth tones",
-            "Everglade green",
-            "Buttered toast",
-            "Terminal",
-            "Terminal Grayscale",
-            "Origami",
-            "Dark Flagship Terrastruct",
-            "Dark mauve"
-          ],
-          "description": "Theme used for preview."
-        },
-        "D2.previewLayout": {
-          "type": "string",
-          "default": "dagre",
-          "enum": [
-            "dagre",
-            "elk",
-            "tala"
-          ],
-          "enumDescriptions": [
-            "The directed graph layout library Dagre",
-            "Eclipse Layout Kernel (ELK) with the Layered algorithm",
-            "Terrastruct's AutoLayout Approach - available if installed"
-          ],
-          "description": "Layout used for preview."
-        },
-        "D2.previewSketch": {
-          "type": "boolean",
-          "default": false,
-          "description": "Use sketch rendering in preview."
-        },
-        "D2.execPath": {
-          "type": "string",
-          "default": "d2",
-          "description": "Path to d2 executable if not on current PATH"
-        },
-        "D2.checkForInstallAtStart": {
-          "type": "boolean",
-          "default": true,
-          "description": "Check for required D2 command line tools on startup."
-        }
-      }
-    },
     "menus": {
       "commandPalette": [
         {

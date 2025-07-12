@@ -27,6 +27,8 @@ import { d2Tasks } from "./tasks";
 import { util } from "./utility";
 import * as path from "path";
 import { TextEncoder } from "util";
+import { registerD2CompletionProvider } from "./d2CompletionProvider";
+import { registerD2HoverProvider } from "./d2HoverProvider";
 
 export const d2Ext = "d2";
 export const d2Lang = "d2";
@@ -237,6 +239,12 @@ export function activate(context: ExtensionContext): VSCAny {
   if (checkForD2) {
     util.checkForD2Install();
   }
+
+  // Register code completion provider
+  registerD2CompletionProvider(context);
+  
+  // Register hover provider
+  registerD2HoverProvider(context);
 
   // Return our markdown renderer
   return {
